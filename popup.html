@@ -101,12 +101,28 @@
         <div class="header">
             <h1>Random Number Input</h1>
         </div>
+        <div class="mb-3 row">
+            <div class="col-sm-6" style="width:50% !important">
+                <label for="minTime" class="form-label">Minimum Range Value</label>
+                <input type="number" class="form-control form-control-sm" id="minTime">
+            </div>
+            <div class="col-sm-6" style="width:50% !important">
+                <label for="maxTime" class="form-label">Maximum Range Value</label>
+                <input type="number" class="form-control form-control-sm" id="maxTime">
+            </div>
+        </div>
+        <div style="text-align:center" class="container-save">
+            <button style="    width: 150px;
+            background-color: green;
+            color: white;
+            font-weight: 600;" type="submit" class="btn btn-save">Save</button>
+        </div>
         <div class="row">
             <div class="col">
                 <div class="container">
                     <span style="vertical-align:text-bottom;font-size:22px;padding-right:20px;">Toggle</span>
                     <label class="switch" for="toggle">
-                        <input type="checkbox" id="toggle" />
+                        <input type="checkbox" id="toggle" checked=false />
                         <div class="slider round"></div>
                     </label>
                 </div>

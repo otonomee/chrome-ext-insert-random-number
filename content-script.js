@@ -6,10 +6,19 @@ function insertRandomNumber(e) {
     // Check if the element is an input field and the type is text
     if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
         // Generate a random number between 0 and 99
-        const randomNumber = Math.floor(Math.random() * 1000000);
-        console.log(randomNumber)
-        // Insert the random number into the input field
-        e.target.value = randomNumber;
+        // const randomNumber = Math.floor(Math.random() * 100000000);
+        let randomNumber;
+        chrome.storage.sync.get('minTime', function (result) {
+            chrome.storage.sync.get('maxTime', function (result2) {
+                console.log(result.minTime)
+                console.log(result2.maxTime)
+                randomNumber = getRandomNumber(parseInt(result.minTime), parseInt(result2.maxTime));
+
+                console.log(randomNumber)
+                // Insert the random number into the input field
+                e.target.value = randomNumber;
+            })
+        })
     }
 }
 
@@ -24,3 +33,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         document.removeEventListener("click", insertRandomNumber);
     }
 });
+
+function getRandomNumber(minVal, maxVal) {
+    let randomNum = Math.random() * (maxVal - minVal) + minVal;
+    return parseFloat(randomNum.toFixed(6));
+}
